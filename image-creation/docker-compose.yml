@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  gmail:
+    image: orchestranexus/python3.11-node24-npx:v0.0.0   
+    command: bash -c "sh /scripts/install_bridge.sh"
+    privileged: true
+    tty: true
+    network_mode: host
+    volumes:
+      - ../scripts:/scripts
+
