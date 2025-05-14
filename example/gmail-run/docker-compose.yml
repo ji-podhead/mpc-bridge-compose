@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  gmail:
+    image: orchestranexus/mcp-bridge:v0.0.0
+    command: bash -c "/scripts/gmail_auth.sh && /scripts/start_bridge.sh"
+    privileged: true
+    tty: true
+    network_mode: host
+    volumes:
+      - ../../scripts:/scripts
+      - ./config:/config
+      - ./auth:/auth
+    environment:
+      MCP_BRIDGE__CONFIG__FILE: /config/bridge_config.json
+

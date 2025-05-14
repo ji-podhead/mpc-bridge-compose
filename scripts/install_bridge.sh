@@ -61,12 +61,12 @@ if [ -f "./$ZIP_FILE_AS" ]; then
     fi
     echo "    Current working directory: $(pwd)"
 
-    echo "    Syncing Python dependencies with uv..."
-    uv sync
-    if [ $? -ne 0 ]; then
-        echo "    ERROR: 'uv sync' failed. Aborting."
-        exit 1
-    fi
+    # echo "    Syncing Python dependencies with uv..."
+    # uv sync
+    # if [ $? -ne 0 ]; then
+    #     echo "    ERROR: 'uv sync' failed. Aborting."
+    #     exit 1
+    # fi
 
     # echo "    Running $PYTHON_MAIN_SCRIPT with uv..."
     # uv run python "$PYTHON_MAIN_SCRIPT"

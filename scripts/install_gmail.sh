@@ -32,22 +32,14 @@ if [ -f "./${ZIP_FILE_AS}" ]; then
     fi
 
     echo "    Installing ./${TARGET_INSTALL_DIR} in editable mode..."
-    # curl -fsSL https://bun.sh/install | bash 
-    # source /root/.bashrc 
-    apt update
-    apt install --assume-yes npm
-
-    npm i -g npx
-    DESTINATION_PATH="${HOME}/gmail-mcp/gcp-oauth.keys.json"
     mkdir "${HOME}/gmail-mcp/"
-    cp  "../../auth/gcp-oauth.keys.json" "${DESTINATION_PATH}"
-    cat "${DESTINATION_PATH}"
-    # cd "./${TARGET_INSTALL_DIR}"
     npm install --prefix "./${TARGET_INSTALL_DIR}"
+    npm run build --prefix "./${TARGET_INSTALL_DIR}"
+    ls "./${TARGET_INSTALL_DIR}"
+    cp -r "./${TARGET_INSTALL_DIR}/dist" "${HOME}/gmail-mcp/"
+    ls  "${HOME}/gmail-mcp/"
     echo "----------> ${REPO_NAME} installed successfully <----------"
 else
     echo "ERROR: ${ZIP_FILE_AS} was not found after wget attempt and is required. Cannot continue."
     exit 1
 fi
-
-exit 0
